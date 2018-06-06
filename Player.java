@@ -264,4 +264,3 @@ class Player {
 
     } // method toString
 
-}
