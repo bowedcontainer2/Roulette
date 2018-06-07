@@ -2,7 +2,7 @@ import java.util.*;
 
 
 
-class Player {
+ abstract class Player {
 
 
 
@@ -83,7 +83,7 @@ class Player {
         boolean a = true;
 
 
-
+        System.out.println("Money Available: "+money);
         System.out.print("How much to bet: ");
 
         bet = scan.nextInt();
@@ -161,23 +161,6 @@ class Player {
 
 
     }
-
-
-
-/*	public boolean playAgain(Scanner scan) {
-
-		String answer;
-
-		System.out.print("Play again [y/n]? ");
-
-		answer = scan.next();
-
-		return answer.equalsIgnoreCase("y");
-
-	}*/ 													//Moving to the game class
-
-
-
     public void payment() {
 
         money = money + Wheel.payoff(bet, betType, number);
@@ -221,46 +204,16 @@ class Player {
         money += net;
 
     }
+    public void addMoney(int mon) {
+    	money+=mon;
+    	count++;
+    }
 
 
 
-    public String toString() {
+    public abstract String printPlayer();
+    	
 
-        String result = "";
+   
 
-        if (count <= 0) {
-
-            int result1 = money - record;
-
-            System.out.println();
-
-            if (result1 > 0) {
-
-                System.out.println("---------Congratulations!---------" + name + ", You won..");
-
-                result = "Total money won by " + name + " is $" + (result1 - count * initalMoney);
-
-            } else if (result1 == 0) {
-
-                result = name + " did not win nor did lose..";
-
-            } else {
-
-                result1 *= -1;
-
-                System.out.println("---------Better Luck next time!!--------- " + name);
-
-                result = "Total money lost by " + name + " is $" + (result1 + count * initalMoney);
-
-            }
-
-        }
-
-        System.out.println(" Housemoney because of " + name + ":$" + Game.houseMoney);
-
-        System.out.println();
-
-        return result;
-
-    } // method toString
-
+}
